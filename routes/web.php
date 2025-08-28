@@ -33,6 +33,59 @@ Route::get('/mitra', function () {
     }
 });
 
+Route::get('/matriks_kegiatan', function () {
+    try {
+        // Ambil semua data dari tabel matriks_kegiatan
+        $mk = DB::table('matriks_kegiatan')->get();
+
+        return response()->json([
+            'success' => true,
+            'data' => $mk
+        ]);
+    } catch (\Throwable $e) {
+        return response()->json([
+            'success' => false,
+            'error' => $e->getMessage(),
+        ], 500);
+    }
+});
+
+Route::get('/rekap_honor', function () {
+    try {
+        // Ambil semua data dari tabel rekap_honor
+        $rh = DB::table('rekap_honor')->get();
+
+        return response()->json([
+            'success' => true,
+            'data' => $rh
+        ]);
+    } catch (\Throwable $e) {
+        return response()->json([
+            'success' => false,
+            'error' => $e->getMessage(),
+        ], 500);
+    }
+});
+
+Route::get('/honor_mitra_bulanan', function () {
+    try {
+        // Ambil semua data dari tabel honor_mitra_bulanan
+        $hmb = DB::table('honor_mitra_bulanan')->get();
+
+        return response()->json([
+            'success' => true,
+            'data' => $hmb
+        ]);
+    } catch (\Throwable $e) {
+        return response()->json([
+            'success' => false,
+            'error' => $e->getMessage(),
+        ], 500);
+    }
+});
+
+
+
 
 Route::get('/', function () {
     return Inertia::render('Welcome');
